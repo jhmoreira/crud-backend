@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -47,4 +48,15 @@ public class ProdutoController {
 		return ResponseEntity.ok(produto);
 	}
 
+	// Atualiza produto
+	@PutMapping("/produtos/{id}")
+	public ResponseEntity<Produto> atualizaProduto(@PathVariable Long id, @RequestBody Produto produtoAtt) {
+		Produto produto= produtoRepositorio.findById(id).orElseThrow(()-> new ProdutoNaoEncontrado("Não existe produto com id: "+id));
+		
+		produto.setNomeProduto(produtoAtt.getNomeProduto());
+		produto.setDescricaoProduto(produtoAtt.getDescricaoProduto());
+		
+	Produto produtoAtualizado=	produtoRepositorio.save(produto);
+	return ResponseEntity.ok(produtoAtualizado);
+	}
 }
