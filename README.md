@@ -4,7 +4,8 @@
 ### Pré-requisitos
 
 Antes de começar, você vai precisar ter instalado em sua máquina as seguintes ferramentas:
-[JDK 8](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html), [Spring Tools](https://spring.io/tools), [MySQL WOrkbench] (https://www.mysql.com/products/workbench/). 
+[JDK 8](https://www.oracle.com/br/java/technologies/javase/javase-jdk8-downloads.html), [Spring Tools](https://spring.io/tools),
+[MySQL Workbench](https://www.mysql.com/products/workbench/). 
 
 ### 🎲 Rodando o Back End (servidor)
 
