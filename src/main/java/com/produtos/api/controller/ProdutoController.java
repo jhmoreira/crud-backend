@@ -38,20 +38,20 @@ public class ProdutoController {
 		return produtoRepositorio.findAll();
 	}
 	
-	// Adiciona produto
+	// Criar um produto
 	@PostMapping("produtos")
 	public Produto criarProduto(@RequestBody Produto produto) {
 		return produtoRepositorio.save(produto);
 	}
 	
-	//Lista produto pelo ID
+	//Lista um produto (pelo ID)
 	@GetMapping("/produtos/{id}")
 	public ResponseEntity<Produto> retornaProdutoPorId(@PathVariable Long id) {
 		Produto produto= produtoRepositorio.findById(id).orElseThrow(()-> new ProdutoNaoEncontrado("Não existe produto com id: "+id));
 		return ResponseEntity.ok(produto);
 	}
 
-	// Atualiza produto
+	// Editar um produto
 	@PutMapping("/produtos/{id}")
 	public ResponseEntity<Produto> atualizaProduto(@PathVariable Long id, @RequestBody Produto produtoAtt) {
 		Produto produto= produtoRepositorio.findById(id).orElseThrow(()-> new ProdutoNaoEncontrado("Não existe produto com id: "+id));
@@ -63,7 +63,7 @@ public class ProdutoController {
 	return ResponseEntity.ok(produtoAtualizado);
 	}
 	
-	// Deleta Produto
+	// Excluir um Produto
 	@DeleteMapping("/produtos/{id}")
 	public ResponseEntity <Map<String, Boolean>> apagaProduto(@PathVariable Long id){
 			Produto produto= produtoRepositorio.findById(id).orElseThrow(()-> new ProdutoNaoEncontrado("Não existe produto com id: "+id));
